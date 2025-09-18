@@ -15,8 +15,9 @@ jobs:
       - run: winget install --id=Python.Python.3.13  -e --accept-package-agreements --accept-source-agreements
 
       - run: |
-          pip install -U pip
+          python -m pip install -U pip
           python -m venv pymob
+          D:\a\pymob\pymob\pymob\Scripts\python.exe -m pip install --upgrade pip
           .\pymob\Scripts\activate
           pip install -U setuptools wheel gpxpy pymobiledevice3
 

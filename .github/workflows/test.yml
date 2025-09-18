@@ -20,7 +20,7 @@ jobs:
       
       - run: sed -i -e "s/#import site/import site/" python*._pth
 
-      - run: winget install --id=Python.Python.3.13  -e
+      - run: winget install --id=Python.Python.3.13  -e --accept-package-agreements --accept-source-agreements
 
       - run: curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 

@@ -1,0 +1,27 @@
+name: pymob
+
+on:
+  workflow_dispatch:
+
+jobs:
+  pymob:
+    runs-on: windows-2025
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - run: wget https://www.python.org/ftp/python/3.13.7/python-3.13.7-embed-amd64.zip
+
+      - run: unzip python-*.zip
+
+      - run: ls python*
+      - run: .\uup_download_windows.cmd
+
+      - run: split -b 2000M -d *.ISO WIN11.ISO
+        shell: bash
+
+
+      - run: gh release create Win11ISO WIN11.ISO??
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}

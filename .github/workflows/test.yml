@@ -27,7 +27,7 @@ jobs:
 
       - run: .\python.exe get-pip.py
 
-      - run: .\python.exe .\Scripts\pip.exe install setuptools wheel
+      - run: .\python.exe .\Scripts\pip.exe install setuptools wheel gpxpy
 
       - run: .\python.exe .\Scripts\pip.exe install pymobiledevice3
 

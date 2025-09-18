@@ -11,18 +11,22 @@ jobs:
         uses: actions/checkout@v5
 
       - run: curl -LOC- https://www.python.org/ftp/python/3.13.7/python-3.13.7-embed-amd64.zip
-        shell: bash
 
       - run: unzip python-*.zip
 
       - run: ls python*
-      - run: .\uup_download_windows.cmd
+      
+      - run: sed -i -e "s/#import site/import site/" python*._pth
 
-      - run: split -b 2000M -d *.ISO WIN11.ISO
-        shell: bash
+      - run: curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 
+      - run: .\python.exe get-pip.py
 
-      - run: gh release create Win11ISO WIN11.ISO??
+      - run: .\python.exe .\Scripts\pip.exe install pymobiledevice3
+
+      - run: tar -cf - . | zstd -T0 -9 > pymob.tar.zst
+
+      - run: gh release create pymob pymob.tar.zst
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}

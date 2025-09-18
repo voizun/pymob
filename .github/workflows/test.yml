@@ -17,6 +17,7 @@ jobs:
       - run: |
           python -m venv pymob
           .\pymob\Scripts\activate
+          pip install -U pip
           pip install -U setuptools wheel gpxpy pymobiledevice3
 
       - run: tar -cf - . | zstd -T0 -9 > pymob.tar.zst

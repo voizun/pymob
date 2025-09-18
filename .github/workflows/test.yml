@@ -15,9 +15,9 @@ jobs:
       - run: winget install --id=Python.Python.3.13  -e --accept-package-agreements --accept-source-agreements
 
       - run: |
+          pip install -U pip
           python -m venv pymob
           .\pymob\Scripts\activate
-          pip install -U pip
           pip install -U setuptools wheel gpxpy pymobiledevice3
 
       - run: tar -cf - . | zstd -T0 -9 > pymob.tar.zst

@@ -11,6 +11,7 @@ jobs:
         uses: actions/checkout@v5
 
       - run: wget https://www.python.org/ftp/python/3.13.7/python-3.13.7-embed-amd64.zip
+        shell: bash
 
       - run: unzip python-*.zip
 
